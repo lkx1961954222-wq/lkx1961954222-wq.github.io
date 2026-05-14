@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@300;400;500&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans SC', sans-serif;
+    background: var(--color-background-tertiary);
+    color: var(--color-text-primary);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .proposal-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    background: var(--color-background-primary);
+    padding: 3rem 3rem 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #7F77DD, #D4537E, #D85A30);
+  }
+  .cover-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .cover-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+  }
+  .cover-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+  }
+  .cover-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 0.5px solid;
+    letter-spacing: 0.03em;
+  }
+  .tag-p { color: #534AB7; border-color: #AFA9EC; background: #EEEDFE; }
+  .tag-pk { color: #993556; border-color: #ED93B1; background: #FBEAF0; }
+  .tag-c { color: #993C1D; border-color: #F0997B; background: #FAECE7; }
+  .tag-t { color: #0F6E56; border-color: #5DCAA5; background: #E1F5EE; }
+  .cover-divider {
+    border: none;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    margin: 1.5rem 0;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .meta-item { }
+  .meta-label {
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.08em;
+    margin-bottom: 4px;
+  }
+  .meta-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  /* ── NAV INDEX ── */
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+  .index-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 1rem 0.75rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .index-card:hover { border-color: var(--color-border-secondary); }
+  .index-card.active { border-color: #7F77DD; }
+  .index-num {
+    font-size: 20px;
+    font-weight: 500;
+    color: #7F77DD;
+    margin-bottom: 4px;
+  }
+  .index-name {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    display: none;
+  }
+  .section.active { display: block; }
+  .section-header {
+    padding: 1.5rem 2rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .section-num {
+    font-size: 13px;
+    font-weight: 500;
+    color: #7F77DD;
+    background: #EEEDFE;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 3px;
+  }
+  .section-desc {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+  }
+  .section-body {
+    padding: 1.5rem 2rem;
+  }
+
+  /* ── MODULE BLOCKS ── */
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .module-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .module {
+    background: var(--color-background-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 1.25rem;
+    border: 0.5px solid var(--color-border-tertiary);
+  }
+  .module-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-p { background: #7F77DD; }
+  .dot-pk { background: #D4537E; }
+  .dot-c { background: #D85A30; }
+  .dot-t { background: #1D9E75; }
+  .dot-b { background: #378ADD; }
+  .dot-g { background: #639922; }
+
+  .module ul {
+    list-style: none;
+    padding: 0;
+  }
+  .module ul li {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    padding: 3px 0;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.55;
+  }
+  .module ul li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--color-text-tertiary);
+    font-size: 10px;
+  }
+
+  /* ── HIGHLIGHT ROW ── */
+  .highlight-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+  .highlight-card {
+    border-radius: var(--border-radius-md);
+    padding: 1rem 1.1rem;
+    border: 0.5px solid;
+  }
+  .hc-p { background: #EEEDFE; border-color: #AFA9EC; }
+  .hc-pk { background: #FBEAF0; border-color: #ED93B1; }
+  .hc-c { background: #FAECE7; border-color: #F0997B; }
+  .hc-t { background: #E1F5EE; border-color: #5DCAA5; }
+  .hc-b { background: #E6F1FB; border-color: #85B7EB; }
+  .hc-g { background: #EAF3DE; border-color: #97C459; }
+  .highlight-card-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .label-p { color: #534AB7; }
+  .label-pk { color: #993556; }
+  .label-c { color: #993C1D; }
+  .label-t { color: #0F6E56; }
+  .label-b { color: #185FA5; }
+  .label-g { color: #3B6D11; }
+  .highlight-card-text {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ── SCRIPT MODEL ── */
+  .script-model {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  .script-row {
+    display: grid;
+    grid-template-columns: 100px 60px 1fr;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    align-items: stretch;
+  }
+  .script-row:last-child { border-bottom: none; }
+  .script-step {
+    padding: 0.8rem 1rem;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    background: var(--color-background-secondary);
+    border-right: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    align-items: center;
+  }
+  .script-time {
+    padding: 0.8rem 0.75rem;
+    font-size: 11px;
+    color: var(--color-text-tertiary);
+    background: var(--color-background-secondary);
+    border-right: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    align-items: center;
+  }
+  .script-content {
+    padding: 0.8rem 1rem;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+  .script-content strong {
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  /* ── PLATFORM CARDS ── */
+  .platform-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .platform-card {
+    border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-tertiary);
+    overflow: hidden;
+  }
+  .platform-header {
+    padding: 0.75rem 1rem;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ph-dk { background: #2C2C2A; color: #F1EFE8; }
+  .ph-pk { background: #FBEAF0; color: #993556; border-bottom: 0.5px solid #ED93B1; }
+  .ph-p { background: #EEEDFE; color: #534AB7; border-bottom: 0.5px solid #AFA9EC; }
+  .platform-body {
+    padding: 1rem;
+    background: var(--color-background-secondary);
+  }
+  .platform-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+  }
+  .pr-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    padding-top: 2px;
+    min-width: 40px;
+  }
+  .pr-content {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ── ROADMAP ── */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+  .road-card {
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    overflow: hidden;
+  }
+  .road-header {
+    padding: 0.6rem 0.9rem;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .rh-1 { background: #EEEDFE; color: #534AB7; }
+  .rh-2 { background: #E1F5EE; color: #0F6E56; }
+  .rh-3 { background: #FBEAF0; color: #993556; }
+  .rh-4 { background: #FAECE7; color: #993C1D; }
+  .road-body {
+    padding: 0.75rem 0.9rem;
+    background: var(--color-background-secondary);
+  }
+  .road-body ul {
+    list-style: none;
+    padding: 0;
+  }
+  .road-body ul li {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    padding: 3px 0;
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .road-body ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--color-text-tertiary);
+  }
+
+  /* ── DIVIDER ── */
+  .sec-divider {
+    border: none;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    margin: 1.25rem 0;
+  }
+  .sub-heading {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── NAV BUTTONS ── */
+  .nav-row {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    padding: 1rem 2rem;
+    border-top: 0.5px solid var(--color-border-tertiary);
+  }
+  .nav-btn {
+    font-size: 12px;
+    padding: 6px 16px;
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .nav-btn:hover { background: var(--color-background-secondary); }
+  .nav-btn.primary { background: #7F77DD; color: #fff; border-color: #7F77DD; }
+  .nav-btn.primary:hover { background: #534AB7; }
+
+  @media (max-width: 600px) {
+    .index-grid { grid-template-columns: repeat(3, 1fr); }
+    .module-grid, .module-grid-3, .highlight-row { grid-template-columns: 1fr; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: repeat(2, 1fr); }
+    .cover-meta { grid-template-columns: repeat(2, 1fr); }
+    .script-row { grid-template-columns: 80px 50px 1fr; }
+  }
+</style>
+
+<div class="proposal-wrap">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">美业IP内容流量系统方案 — 高端商业咨询提案</h2>
+
+  <!-- COVER -->
+  <div class="cover">
+    <p class="cover-label">CONFIDENTIAL · STRATEGIC PROPOSAL</p>
+    <h1 class="cover-title">美业IP内容流量系统方案</h1>
+    <p class="cover-sub">Beauty IP · Content Architecture · Traffic Ecosystem</p>
+    <div class="cover-tags">
+      <span class="tag tag-p">IP定位体系</span>
+      <span class="tag tag-pk">内容创作体系</span>
+      <span class="tag tag-c">成片与账号体系</span>
+      <span class="tag tag-t">流量前端体系</span>
+      <span class="tag tag-p">月度陪跑优化</span>
+    </div>
+    <hr class="cover-divider">
+    <div class="cover-meta">
+      <div class="meta-item">
+        <p class="meta-label">适用客户</p>
+        <p class="meta-value">医美 / 抗衰 / 美业老板</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">覆盖平台</p>
+        <p class="meta-value">抖音 · 小红书 · 视频号</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">内容维度</p>
+        <p class="meta-value">5大体系 · 13个模块</p>
+      </div>
+      <div class="meta-item">
+        <p class="meta-label">服务定位</p>
+        <p class="meta-value">前端内容系统落地</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDEX -->
+  <div class="index-grid" id="index-nav">
+    <div class="index-card active" onclick="switchSection(0)">
+      <p class="index-num">Ⅰ</p>
+      <p class="index-name">IP定位体系</p>
+    </div>
+    <div class="index-card" onclick="switchSection(1)">
+      <p class="index-num">Ⅱ</p>
+      <p class="index-name">内容创作体系</p>
+    </div>
+    <div class="index-card" onclick="switchSection(2)">
+      <p class="index-num">Ⅲ</p>
+      <p class="index-name">成片与账号体系</p>
+    </div>
+    <div class="index-card" onclick="switchSection(3)">
+      <p class="index-num">Ⅳ</p>
+      <p class="index-name">流量前端体系</p>
+    </div>
+    <div class="index-card" onclick="switchSection(4)">
+      <p class="index-num">Ⅴ</p>
+      <p class="index-name">月度陪跑优化</p>
+    </div>
+  </div>
+
+  <!-- ── SECTION 1: IP定位体系 ── -->
+  <div class="section active" id="sec-0">
+    <div class="section-header">
+      <span class="section-num">第一模块</span>
+      <div>
+        <p class="section-title">IP定位体系</p>
+        <p class="section-desc">Identity Architecture · Brand Persona · Content Worldview</p>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <p class="sub-heading">核心定位 · 三圈模型</p>
+      <div class="highlight-row">
+        <div class="highlight-card hc-p">
+          <p class="highlight-card-label label-p">能力圈 · 你能给什么</p>
+          <p class="highlight-card-text">你在美业/医美/抗衰领域的核心专业壁垒。不是"做了很多年"，而是有哪个具体问题是你能解决、别人解决不了的。定位从这里出发。</p>
+        </div>
+        <div class="highlight-card hc-pk">
+          <p class="highlight-card-label label-pk">用户圈 · 她需要什么</p>
+          <p class="highlight-card-text">35-50岁高净值女性用户的核心焦虑：变老、失控、被割韭菜、不被看见。你的IP要精准接住这种焦虑，并给出专业出口。</p>
+        </div>
+        <div class="highlight-card hc-c">
+          <p class="highlight-card-label label-c">市场圈 · 空白在哪里</p>
+          <p class="highlight-card-text">找到竞品没有占据的位置：科普类太学术、网红类太浮躁、机构类太销售。你的定位区间在"专业+真实+高价值感"的交叉地带。</p>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">人设标签系统</p>
+      <div class="module-grid">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-p"></span>核心标签（只选一个）</p>
+          <ul>
+            <li>「抗衰顾问」— 专注30+女性逆龄管理，不贩卖焦虑，给真方案</li>
+            <li>「医美解码者」— 帮你看懂医美套路，钱花对地方</li>
+            <li>「皮肤真相局」— 颠覆网红护肤逻辑，用数据说话</li>
+            <li>「美业创始人说」— 一个开了XX年机构的老板，讲行业真话</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>人设辅助标签（3-5个）</p>
+          <ul>
+            <li>身份背书标签：执业资质 / 机构年限 / 专业学历</li>
+            <li>性格标签：真实 / 不打马虎眼 / 敢说同行不敢说的话</li>
+            <li>生活标签：精致妈妈 / 独立女性 / 自我管理践行者</li>
+            <li>视觉标签：固定穿搭色系 + 固定拍摄场景（诊所/书房/化妆台）</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">信任感设计路径</p>
+      <div class="module-grid-3">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-t"></span>专业信任</p>
+          <ul>
+            <li>定期露出资质/证书/机构环境</li>
+            <li>使用专业词汇但立即翻译成人话</li>
+            <li>引用有来源的数据/研究</li>
+            <li>勇于说"这个我不确定"</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-b"></span>真实信任</p>
+          <ul>
+            <li>展示工作状态的"不完美切面"</li>
+            <li>分享自己踩过的坑和后悔的决定</li>
+            <li>不回避争议话题，有立场有态度</li>
+            <li>评论区真实互动，不删差评</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-g"></span>价值信任</p>
+          <ul>
+            <li>每条视频给出一个"带走即可用"的干货</li>
+            <li>主动反推销：帮用户省钱而不是让她消费</li>
+            <li>长期一致的价值观输出，不随热点漂移</li>
+            <li>IP形象全平台统一，认知不分裂</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">内容世界观 · 长期方向规划</p>
+      <div class="module">
+        <p class="module-title"><span class="dot dot-p"></span>内容世界观宣言（示例框架）</p>
+        <ul>
+          <li>核心信念：「真正的抗衰是让自己越活越值钱，不是对抗岁月，是驾驭岁月」</li>
+          <li>用户镜像：「我的观众是那些不愿意被忽悠但又真的想变好的女人」</li>
+          <li>内容边界：只讲内容前端可验证的事，不造成医疗误导，不夸大效果</li>
+          <li>长期调性：专业 × 真实 × 有态度 × 不贩卖焦虑</li>
+        </ul>
+      </div>
+      <div class="module-grid" style="margin-top:1rem">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>长期内容方向 · 主线</p>
+          <ul>
+            <li>专业科普线：抗衰/皮肤/医美知识体系持续输出</li>
+            <li>创始人真实线：行业内幕 / 经营心得 / 从业感悟</li>
+            <li>女性成长线：35+女人的自我意识、身体意识、消费意识</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-c"></span>长期内容方向 · 辅线</p>
+          <ul>
+            <li>案例故事线：客户真实改变故事（去识别化处理）</li>
+            <li>争议观点线：颠覆认知 / 行业真相 / 反常识科普</li>
+            <li>生活质感线：创始人日常 / 审美分享 / 管理习惯</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn primary" onclick="switchSection(1)">下一模块：内容创作体系 →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: 内容创作体系 ── -->
+  <div class="section" id="sec-1">
+    <div class="section-header">
+      <span class="section-num">第二模块</span>
+      <div>
+        <p class="section-title">内容创作体系</p>
+        <p class="section-desc">Content Structure · Script Model · Topic System</p>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <p class="sub-heading">爆款内容结构 · HOOK-VALUE-PULL框架</p>
+      <div class="script-model">
+        <div class="script-row">
+          <div class="script-step">开场HOOK</div>
+          <div class="script-time">0-5秒</div>
+          <div class="script-content"><strong>痛点型：</strong>「你花了3万打的水光针，有一半的钱是浪费的」<br><strong>反常识型：</strong>「医美界公认的黄金搭档，其实根本没有协同效应」<br><strong>身份型：</strong>「做了17年医美机构的老板，今天跟你说几个真话」</div>
+        </div>
+        <div class="script-row">
+          <div class="script-step">建立信任</div>
+          <div class="script-time">5-15秒</div>
+          <div class="script-content"><strong>一句话给出专业背书</strong>：资质 / 从业年限 / 经手案例数量，不要堆砌，选最有力的一个。</div>
+        </div>
+        <div class="script-row">
+          <div class="script-step">核心价值</div>
+          <div class="script-time">15-50秒</div>
+          <div class="script-content"><strong>1-3个实操要点</strong>，每个点都有"可执行动作"，不是讲理论，是给用户一个"今天就能用"的认知升级。</div>
+        </div>
+        <div class="script-row">
+          <div class="script-step">情绪收尾</div>
+          <div class="script-time">50-60秒</div>
+          <div class="script-content"><strong>价值感句子 + 轻引导：</strong>「聪明的女人应该把钱花在刀刃上——关注我，我帮你做那把刀」</div>
+        </div>
+        <div class="script-row">
+          <div class="script-step">评论钩子</div>
+          <div class="script-time">可选</div>
+          <div class="script-content"><strong>留白型问题：</strong>「你们最纠结的是XX还是XX？评论告诉我」— 提高完播率和互动数据。</div>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">美业口播五大内容类型</p>
+      <div class="module-grid">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-p"></span>女性情绪价值型</p>
+          <ul>
+            <li>核心逻辑：先共情情绪，再输出认知，最后给力量感</li>
+            <li>例：「35岁之后，很多女人开始觉得自己变丑了。但我见过太多客户，40岁比25岁更美——因为她学会了管理自己。」</li>
+            <li>配套情绪：被看见 / 被认可 / 有力量 / 不孤单</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>专业科普拆解型</p>
+          <ul>
+            <li>核心逻辑：把专业知识降维到"小学生听得懂"的程度</li>
+            <li>结构：现象（你看到的）→ 真相（实际是什么）→ 行动建议</li>
+            <li>禁忌：不要一条视频讲超过3个知识点</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-t"></span>行业真相揭秘型</p>
+          <ul>
+            <li>核心逻辑：利用信息差，创造"只有内行才知道"的优越感</li>
+            <li>例：「你花1000块做的XX项目，成本只有80」/ 「医美机构最怕你知道的事」</li>
+            <li>注意：揭秘行业问题 ≠ 攻击同行，要上升到"帮用户做正确选择"</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-b"></span>成交型内容逻辑</p>
+          <ul>
+            <li>核心逻辑：在内容中埋植"决策锚点"，让用户自发产生咨询意愿</li>
+            <li>结构：问题放大 → 方案对比 → 正确路径 → 行动指引（轻）</li>
+            <li>关键：不在视频里说"加我""联系我"，要让用户自己找过来</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">系列栏目设计（建立账号记忆点）</p>
+      <div class="module-grid-3">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-p"></span>固定栏目 · 主力</p>
+          <ul>
+            <li>「真相局」— 每周一条，颠覆一个美业认知</li>
+            <li>「创始人日记」— 每周一条，展示真实工作切面</li>
+            <li>「30秒必知」— 超短型，一个知识点，高完播率</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>周期性栏目 · 辅助</p>
+          <ul>
+            <li>「本周我见过的案例」— 匿名故事化处理，真实感强</li>
+            <li>「问答实录」— 用评论区提问直接做内容，互动数据极好</li>
+            <li>「选什么别选什么」— 对比型，极易上热门</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-c"></span>选题系统 · 来源</p>
+          <ul>
+            <li>来源①：客户咨询时高频问题（最接地气）</li>
+            <li>来源②：平台热门评论区的焦虑词</li>
+            <li>来源③：竞品爆款评论区"没被回答的问题"</li>
+            <li>来源④：行业内最近出现的争议/新项目/新说法</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn" onclick="switchSection(0)">← 上一模块</button>
+      <button class="nav-btn primary" onclick="switchSection(2)">下一模块：成片与账号体系 →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 3: 成片与账号体系 ── -->
+  <div class="section" id="sec-2">
+    <div class="section-header">
+      <span class="section-num">第三模块</span>
+      <div>
+        <p class="section-title">成片与账号体系</p>
+        <p class="section-desc">Post-Production · Visual Identity · Account Consistency</p>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <p class="sub-heading">剪辑策略 · 节奏设计</p>
+      <div class="module-grid">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-p"></span>剪辑节奏规则</p>
+          <ul>
+            <li>口播片段：每2-3秒一个切点（无实质内容的停顿全部剪掉）</li>
+            <li>第一个字要"跳入画面"，不能有任何前摇</li>
+            <li>关键信息处：切为大字幕全屏特写，强化记忆点</li>
+            <li>结尾前0.5秒：加一个视觉或声音的「收束动作」</li>
+            <li>全片不超过70秒（首月建议40-60秒）</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>字幕与文字策略</p>
+          <ul>
+            <li>字幕字号：正文22-24px，强调词放大至32px以上</li>
+            <li>关键词加色标注（品牌色，全账号统一）</li>
+            <li>每5-8秒出现一个「视觉锚点」（小标题/表情包/数据卡片）</li>
+            <li>禁止密集字幕覆盖全屏——留呼吸空间</li>
+            <li>AI字幕全部校对，错别字是专业度杀手</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">高级感视觉方向</p>
+      <div class="highlight-row">
+        <div class="highlight-card hc-p">
+          <p class="highlight-card-label label-p">色彩基调</p>
+          <p class="highlight-card-text">确定2-3色品牌色。医美偏冷白/莫兰迪/深灰金；抗衰偏米杏/玫瑰金/奶油白；皮肤管理偏奶茶色/裸感。全账号不换色系。</p>
+        </div>
+        <div class="highlight-card hc-pk">
+          <p class="highlight-card-label label-pk">字体品牌感</p>
+          <p class="highlight-card-text">全片使用1-2款字体，不超过3种。主标题：有设计感的中文黑体/衬线。正文：清晰可读的细黑体。禁止系统默认黄色字幕。</p>
+        </div>
+        <div class="highlight-card hc-t">
+          <p class="highlight-card-label label-t">视觉锁定点</p>
+          <p class="highlight-card-text">找到一个"只要看到这个元素，就知道是你"的视觉钩子：固定开场动态字卡、固定片尾Logo动效、固定角标品牌标识。</p>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">B-roll 规划思路</p>
+      <div class="module-grid">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-b"></span>B-roll类型优先级</p>
+          <ul>
+            <li>P1 — 环境B-roll：诊所/操作间/工作台，建立专业感（每月固定素材库）</li>
+            <li>P2 — 产品/设备B-roll：仪器特写、产品细节，配合讲解使用</li>
+            <li>P3 — 人文B-roll：工作中的手部/局部动作，无需跟拍即可制作</li>
+            <li>P4 — 数据可视化B-roll：用动态图表替代纯讲数据</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-g"></span>B-roll素材自建指南</p>
+          <ul>
+            <li>每月集中拍摄1次，积累30-50条素材（手机即可）</li>
+            <li>固定场景：操作台 / 诊室走廊 / 产品陈列 / 书桌工作</li>
+            <li>固定道具：品牌马克杯 / 专业手册 / 白大褂 / 设备特写</li>
+            <li>不需要跟拍，所有B-roll自主可控，降低制作成本</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">封面标题系统 · 账号统一性</p>
+      <div class="module-grid-3">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-p"></span>封面设计规则</p>
+          <ul>
+            <li>封面字数控制在8字以内（最多12字）</li>
+            <li>固定版式模板（1-2套），换内容不换版式</li>
+            <li>主色+白字 或 白底+主色字，两套方案切换</li>
+            <li>主图：真人出镜 &gt; 产品特写 &gt; 设计封面</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>标题写作公式</p>
+          <ul>
+            <li>数字型：「3个信号说明你的胶原蛋白已经流失了」</li>
+            <li>反常识型：「越贵的护肤品越可能毁掉你的皮肤屏障」</li>
+            <li>身份型：「医美机构不告诉你的7件事」</li>
+            <li>对话型：「你做光子嫩肤之前应该先问这3个问题」</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-c"></span>账号统一性检查清单</p>
+          <ul>
+            <li>头像：真人形象，光线稳定，表情有力量感</li>
+            <li>昵称：含核心标签词，简洁可记忆（最多8字）</li>
+            <li>简介：一句话定位 + 核心价值 + 轻引导动作</li>
+            <li>内容：翻开前6条，视觉色调/字体/框架是否统一</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn" onclick="switchSection(1)">← 上一模块</button>
+      <button class="nav-btn primary" onclick="switchSection(3)">下一模块：流量前端体系 →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 4: 流量前端体系 ── -->
+  <div class="section" id="sec-3">
+    <div class="section-header">
+      <span class="section-num">第四模块</span>
+      <div>
+        <p class="section-title">流量前端体系</p>
+        <p class="section-desc">Platform Strategy · Traffic Logic · User Conversion Path</p>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <p class="sub-heading">三平台定位矩阵</p>
+      <div class="platform-grid">
+        <div class="platform-card">
+          <div class="platform-header ph-dk">
+            <i class="ti ti-brand-tiktok" aria-hidden="true"></i>
+            抖音
+          </div>
+          <div class="platform-body">
+            <div class="platform-row">
+              <p class="pr-label">定位</p>
+              <p class="pr-content">主流量入口，靠内容质量+算法扩散，强调播放量与关注增长</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">起号逻辑</p>
+              <p class="pr-content">前20条垂直内容打标签；第1-2周不追热点，只发核心赛道内容</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">流量打法</p>
+              <p class="pr-content">口播竖屏为主；善用「搜索词」布局；定期复投高互动内容</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">评论区</p>
+              <p class="pr-content">置顶评论设计信息锚：「想了解XX的 打1」/ 引导问题延伸</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">信任钩子</p>
+              <p class="pr-content">简介第一行是专业背书；主页置顶1条"品牌故事/自我介绍"视频</p>
+            </div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header ph-pk">
+            <i class="ti ti-notebook" aria-hidden="true"></i>
+            小红书
+          </div>
+          <div class="platform-body">
+            <div class="platform-row">
+              <p class="pr-label">定位</p>
+              <p class="pr-content">搜索流量核心阵地，种草逻辑，图文+短视频双轨并行</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">起号逻辑</p>
+              <p class="pr-content">前30篇全部布局SEO关键词；发布时间固定，账号权重更稳定</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">流量打法</p>
+              <p class="pr-content">标题含精准搜索词（"医美避坑"/"水光针选择"）；首图决定点击率</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">评论区</p>
+              <p class="pr-content">每条笔记回复前10条评论；用"你可以私信我"代替外部跳转</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">信任钩子</p>
+              <p class="pr-content">高光笔记集：「看完这一篇，足够做决定」型内容做合辑</p>
+            </div>
+          </div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-header ph-p">
+            <i class="ti ti-brand-wechat" aria-hidden="true"></i>
+            视频号
+          </div>
+          <div class="platform-body">
+            <div class="platform-row">
+              <p class="pr-label">定位</p>
+              <p class="pr-content">微信生态内的信任放大器，偏中老年/本地/熟人传播逻辑</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">起号逻辑</p>
+              <p class="pr-content">同步发布抖音内容；利用朋友圈分享放大初始流量；标签精准</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">流量打法</p>
+              <p class="pr-content">视频号重「转发」逻辑——内容要能让粉丝有"我要分享给朋友"的冲动</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">评论区</p>
+              <p class="pr-content">评论区积极置顶重要内容；适当引导微信好友添加</p>
+            </div>
+            <div class="platform-row">
+              <p class="pr-label">信任钩子</p>
+              <p class="pr-content">与公众号联动：长内容公众号+短视频视频号，形成生态闭环</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">用户转化路径设计（内容前端层）</p>
+      <div class="module">
+        <p class="module-title"><span class="dot dot-p"></span>前端内容的转化漏斗：看见 → 认知 → 信任 → 主动触达</p>
+        <ul>
+          <li>第一层「看见」：靠HOOK抓住注意力，前3秒决定完播率</li>
+          <li>第二层「认知」：靠内容质量建立"这个人说的比别人更准"的心智认知</li>
+          <li>第三层「信任」：靠系列内容和评论区互动，建立"她是真的懂我"的情感连接</li>
+          <li>第四层「主动触达」：不是你去找用户，是用户主动来找你——评论留言/点击主页/主动私信</li>
+          <li>内容前端的终点：让用户产生「我想找这个人聊聊」的冲动</li>
+        </ul>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn" onclick="switchSection(2)">← 上一模块</button>
+      <button class="nav-btn primary" onclick="switchSection(4)">下一模块：月度陪跑 →</button>
+    </div>
+  </div>
+
+  <!-- ── SECTION 5: 月度陪跑 ── -->
+  <div class="section" id="sec-4">
+    <div class="section-header">
+      <span class="section-num">第五模块</span>
+      <div>
+        <p class="section-title">月度陪跑优化体系</p>
+        <p class="section-desc">Monthly Review · Content Iteration · Growth Roadmap</p>
+      </div>
+    </div>
+    <div class="section-body">
+
+      <p class="sub-heading">四周复盘节奏</p>
+      <div class="roadmap">
+        <div class="road-card">
+          <div class="road-header rh-1">第1周</div>
+          <div class="road-body"><ul>
+            <li>内容发布情况对齐</li>
+            <li>前3条完播率/互动数据采集</li>
+            <li>账号标签是否跑准确认</li>
+            <li>封面/标题点击率分析</li>
+          </ul></div>
+        </div>
+        <div class="road-card">
+          <div class="road-header rh-2">第2周</div>
+          <div class="road-body"><ul>
+            <li>爆款内容识别（完播率&gt;35%）</li>
+            <li>内容选题方向微调</li>
+            <li>评论区高频问题整理→下月选题</li>
+            <li>人设稳定性自检</li>
+          </ul></div>
+        </div>
+        <div class="road-card">
+          <div class="road-header rh-3">第3周</div>
+          <div class="road-body"><ul>
+            <li>全平台数据横向对比</li>
+            <li>调整内容节奏（发布频次/类型比例）</li>
+            <li>确认下月栏目规划</li>
+            <li>高互动内容二次剪辑复投</li>
+          </ul></div>
+        </div>
+        <div class="road-card">
+          <div class="road-header rh-4">月度总结</div>
+          <div class="road-body"><ul>
+            <li>月度核心指标报告输出</li>
+            <li>IP形象一致性评估</li>
+            <li>下月内容日历锁定</li>
+            <li>阶段升级方向确认</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">核心数据指标体系（内容前端）</p>
+      <div class="module-grid-3">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-p"></span>流量质量指标</p>
+          <ul>
+            <li>完播率（&gt;35% = 内容及格，&gt;50% = 优质）</li>
+            <li>粉丝增长率（周同比/月同比）</li>
+            <li>主页访问量（反映封面+标题吸引力）</li>
+            <li>自然流量比（判断账号标签是否精准）</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>内容质量指标</p>
+          <ul>
+            <li>互动率（点赞+评论+收藏/播放量）</li>
+            <li>收藏率（&gt;3% = 内容有实用价值）</li>
+            <li>评论质量（是否出现"想了解更多"）</li>
+            <li>转发分享率（视频号/小红书重点关注）</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-t"></span>人设健康指标</p>
+          <ul>
+            <li>粉丝画像是否与目标客群吻合</li>
+            <li>评论区"内容调性"词云是否正向</li>
+            <li>是否出现"专业、真实、有用"类评价</li>
+            <li>高客单用户主动私信/问询数量</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="sec-divider">
+      <p class="sub-heading">阶段升级路径（6个月规划）</p>
+      <div class="module-grid">
+        <div class="module">
+          <p class="module-title"><span class="dot dot-b"></span>第1-2月：账号定型期</p>
+          <ul>
+            <li>核心任务：跑通内容节奏，稳定发布频次（4-5条/周）</li>
+            <li>内容策略：纯垂直内容，不追热点，打算法标签</li>
+            <li>成功标志：账号标签准确，有条视频完播率超过40%</li>
+            <li>人设任务：建立"专业且真实"的基础认知</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-g"></span>第3-4月：流量放大期</p>
+          <ul>
+            <li>核心任务：复制爆款内容模型，提升账号权重</li>
+            <li>内容策略：80%稳定内容 + 20%热点借势，有策略地追流量</li>
+            <li>成功标志：月均播放量稳步增长，主动咨询用户出现</li>
+            <li>人设任务：推出系列栏目，建立账号记忆符号</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-pk"></span>第5-6月：品牌强化期</p>
+          <ul>
+            <li>核心任务：IP形象全面成型，开始跨平台联动</li>
+            <li>内容策略：开始布局较长内容 / 专业合集 / 深度系列</li>
+            <li>成功标志：被用户主动推荐 / 出现"找这个人看看"的自然传播</li>
+            <li>人设任务：确立行业权威IP地位，高客单用户信任闭环建立</li>
+          </ul>
+        </div>
+        <div class="module">
+          <p class="module-title"><span class="dot dot-c"></span>持续迭代原则</p>
+          <ul>
+            <li>每月至少迭代1个内容结构或选题方向</li>
+            <li>每季度重新审视IP定位是否需要微调</li>
+            <li>爆款内容：3个月内二次深挖，围绕同话题拓展系列</li>
+            <li>账号数据下滑时：先回归基本面，不要盲目转型</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="nav-row">
+      <button class="nav-btn" onclick="switchSection(3)">← 上一模块</button>
+      <button class="nav-btn primary" onclick="switchSection(0)">回到起点 ↑</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function switchSection(idx) {
+  document.querySelectorAll('.section').forEach((s, i) => {
+    s.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('#index-nav .index-card').forEach((c, i) => {
+    c.classList.toggle('active', i === idx);
+  });
+  document.querySelector('.proposal-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>

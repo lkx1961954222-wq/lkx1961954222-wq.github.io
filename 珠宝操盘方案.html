@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高阶女性社交珠宝IP · 完整操盘方案</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+  
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --dark: #0D0D0D;
+    --dark2: #1A1A1A;
+    --dark3: #242424;
+    --text: #E8E0D5;
+    --text-muted: #9A8E80;
+    --accent: #8B6B4A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    padding: 16px 18px;
+    cursor: pointer;
+    font-size: 13px;
+    white-space: nowrap;
+    transition: color 0.2s;
+    border-bottom: 2px solid transparent;
+    font-family: inherit;
+  }
+  .nav-btn:hover, .nav-btn.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 80px 40px 60px;
+    background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.08) 0%, transparent 70%);
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+  }
+  .hero-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 300;
+    letter-spacing: 6px;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .hero h1 span {
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+  }
+  .hero-sub {
+    color: var(--text-muted);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .hero-tag {
+    border: 1px solid rgba(201,169,110,0.35);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* SECTIONS */
+  .section {
+    display: none;
+    padding: 48px 40px 80px;
+    max-width: 960px;
+    margin: 0 auto;
+    animation: fadeIn 0.3s ease;
+  }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-headline {
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--dark2);
+    border: 1px solid rgba(201,169,110,0.12);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+  .card-title {
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card-title::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+
+  /* TAGS */
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .tag {
+    background: rgba(201,169,110,0.08);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--gold-light);
+    padding: 5px 14px;
+    font-size: 13px;
+  }
+  .tag.dark {
+    background: var(--dark3);
+    border-color: rgba(255,255,255,0.08);
+    color: var(--text-muted);
+  }
+
+  /* QUOTE */
+  .quote {
+    border-left: 2px solid var(--gold);
+    padding: 12px 20px;
+    margin: 20px 0;
+    color: var(--gold-light);
+    font-style: italic;
+    font-size: 16px;
+    background: rgba(201,169,110,0.04);
+  }
+
+  /* NUMBERED LIST */
+  .num-list { counter-reset: item; }
+  .num-list li {
+    counter-increment: item;
+    list-style: none;
+    padding: 10px 0 10px 40px;
+    position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 14px;
+    color: var(--text);
+  }
+  .num-list li:last-child { border-bottom: none; }
+  .num-list li::before {
+    content: counter(item, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 12px;
+    font-family: 'Playfair Display', serif;
+    top: 11px;
+  }
+
+  /* COLUMN SYSTEM */
+  .column-card {
+    background: var(--dark2);
+    border: 1px solid rgba(201,169,110,0.12);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+  }
+  .column-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,169,110,0.15);
+    cursor: pointer;
+  }
+  .column-name {
+    color: var(--gold);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .column-badge {
+    background: rgba(201,169,110,0.12);
+    color: var(--gold);
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid rgba(201,169,110,0.25);
+  }
+  .column-topics { display: none; }
+  .column-topics.open { display: block; }
+
+  /* PHASE */
+  .phase-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+    align-items: start;
+  }
+  .phase-label {
+    background: rgba(201,169,110,0.08);
+    border: 1px solid rgba(201,169,110,0.2);
+    text-align: center;
+    padding: 12px;
+    color: var(--gold);
+    font-size: 13px;
+  }
+  .phase-content { padding-top: 4px; }
+  .phase-title { color: var(--text); font-size: 15px; margin-bottom: 8px; }
+  .phase-desc { color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: linear-gradient(135deg, rgba(201,169,110,0.06), rgba(201,169,110,0.02));
+    border: 1px solid rgba(201,169,110,0.25);
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .highlight-title { color: var(--gold); font-size: 13px; margin-bottom: 8px; letter-spacing: 1px; }
+
+  /* TITLES 100 */
+  .titles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 10px;
+  }
+  .title-item {
+    background: var(--dark2);
+    border: 1px solid rgba(201,169,110,0.08);
+    padding: 14px 18px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .title-item:hover { border-color: rgba(201,169,110,0.3); }
+  .title-num {
+    color: var(--gold);
+    font-size: 11px;
+    font-family: 'Playfair Display', serif;
+    min-width: 22px;
+    margin-top: 2px;
+  }
+
+  /* DIVIDER */
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 24px 0;
+  }
+
+  /* STYLE GRID */
+  .style-item {
+    background: var(--dark2);
+    border: 1px solid rgba(201,169,110,0.1);
+    padding: 20px;
+  }
+  .style-label {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .style-val { color: var(--text); font-size: 14px; line-height: 1.7; }
+
+  /* OPC */
+  .opc-block {
+    background: var(--dark2);
+    border-top: 2px solid var(--gold);
+    padding: 28px 32px;
+    margin-bottom: 16px;
+  }
+  .opc-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: rgba(201,169,110,0.15);
+    line-height: 1;
+    float: left;
+    margin-right: 16px;
+    margin-top: -4px;
+  }
+  .opc-title { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+  .opc-body { color: var(--text); font-size: 14px; line-height: 1.8; }
+
+  p { margin-bottom: 12px; color: var(--text-muted); font-size: 14px; }
+  strong { color: var(--text); }
+
+  .video-structure {
+    counter-reset: step;
+  }
+  .step {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 0;
+    margin-bottom: 4px;
+  }
+  .step-label {
+    background: rgba(201,169,110,0.1);
+    border: 1px solid rgba(201,169,110,0.2);
+    color: var(--gold);
+    font-size: 12px;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+  }
+  .step-content {
+    background: var(--dark2);
+    border: 1px solid rgba(201,169,110,0.08);
+    border-left: none;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .step-content small { color: var(--text-muted); display: block; margin-top: 4px; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-eyebrow">Complete Strategy · 2024</div>
+  <h1>高阶女性<span>社交珠宝</span>IP<br>完整操盘方案</h1>
+  <div class="hero-sub">Social Jewelry · Premium Female Audience · ¥3,000–¥50,000</div>
+  <div class="hero-tags">
+    <span class="hero-tag">小红书 · 抖音 · 视频号</span>
+    <span class="hero-tag">圈层社交</span>
+    <span class="hero-tag">情绪价值</span>
+    <span class="hero-tag">高客单转化</span>
+    <span class="hero-tag">私域闭环</span>
+  </div>
+</div>
+
+<div class="nav" id="mainNav">
+  <button class="nav-btn active" onclick="showSection('opc',this)">OPC定位</button>
+  <button class="nav-btn" onclick="showSection('persona',this)">核心人设</button>
+  <button class="nav-btn" onclick="showSection('content',this)">内容体系</button>
+  <button class="nav-btn" onclick="showSection('traffic',this)">流量方向</button>
+  <button class="nav-btn" onclick="showSection('convert',this)">成交内容</button>
+  <button class="nav-btn" onclick="showSection('monetize',this)">变现路径</button>
+  <button class="nav-btn" onclick="showSection('visual',this)">视觉风格</button>
+  <button class="nav-btn" onclick="showSection('structure',this)">爆款结构</button>
+  <button class="nav-btn" onclick="showSection('titles',this)">100条标题</button>
+</div>
+
+<!-- ===================== OPC ===================== -->
+<div class="section active" id="opc">
+  <div class="section-title">Part 01</div>
+  <div class="section-headline">OPC 战略定位</div>
+
+  <div class="opc-block">
+    <div class="opc-letter">O</div>
+    <div class="opc-title">OFFER · 产品定位</div>
+    <div class="opc-body">
+      <strong>不是在卖珠宝，是在卖一种被看见的权利。</strong><br><br>
+      核心产品：社交珠宝（¥3,000–¥50,000）<br>
+      产品语言：每一件作品，都是你在某个场合最有力的表达<br><br>
+      <strong>产品价值层次：</strong><br>
+      · 功能层：高品质材质、精湛工艺、独特设计<br>
+      · 情感层：气场升级、身份感知、被记住的美<br>
+      · 社交层：圈层入场券、无声的自我介绍、值得被凝视的存在<br>
+      · 身份层：我不是买了一件珠宝，我买的是"成为更好版本的自己"
+    </div>
+  </div>
+
+  <div class="opc-block">
+    <div class="opc-letter">P</div>
+    <div class="opc-title">PERSONA · 人设定位</div>
+    <div class="opc-body">
+      <strong>「高阶女性社交审美顾问」</strong><br><br>
+      · 不是珠宝销售，是懂你圈层的审美参谋<br>
+      · 不是告诉你什么值钱，是告诉你什么让你值钱<br>
+      · 游走于高端社交场、有真实的圈层生活、有锐利的女性洞察<br>
+      · 说话方式：冷静、有质感、偶尔犀利、充满女性主体意识<br><br>
+      <strong>参考气质标杆：</strong>「宋惠乔的克制美」+「Christine Nagel的嗅觉叙事感」+「国内顶尖独立女性博主的思想锐度」
+    </div>
+  </div>
+
+  <div class="opc-block">
+    <div class="opc-letter">C</div>
+    <div class="opc-title">CONTENT · 内容定位</div>
+    <div class="opc-body">
+      <strong>内容本质：帮高阶女性更清晰地看见自己</strong><br><br>
+      内容三角：<br>
+      · <strong>社交观察</strong>（洞察圈层行为，引发共鸣与讨论）<br>
+      · <strong>审美表达</strong>（珠宝×场合×身份的美学叙事）<br>
+      · <strong>女性洞察</strong>（情绪、欲望、自我成长的深层共振）<br><br>
+      内容调性关键词：<strong>克制、锐利、有质感、让人想截图、值得转发</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== PERSONA ===================== -->
+<div class="section" id="persona">
+  <div class="section-title">Part 02</div>
+  <div class="section-headline">核心人设系统</div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">人设标签</div>
+      <div class="tag-list">
+        <span class="tag">高阶女性审美顾问</span>
+        <span class="tag">社交场合读心者</span>
+        <span class="tag">圈层美学观察家</span>
+        <span class="tag">轻奢生活方式研究者</span>
+        <span class="tag">独立女性意见领袖</span>
+        <span class="tag">身份珠宝策划师</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">人设关键词</div>
+      <div class="tag-list">
+        <span class="tag dark">克制</span>
+        <span class="tag dark">锐利</span>
+        <span class="tag dark">看透但不说破</span>
+        <span class="tag dark">圈层感</span>
+        <span class="tag dark">女性主体意识</span>
+        <span class="tag dark">审美压迫感</span>
+        <span class="tag dark">优雅的犀利</span>
+        <span class="tag dark">细节控</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="card-title">人设差异化 · 竞品对比</div>
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:13px">
+        <tr style="border-bottom:1px solid rgba(201,169,110,0.2)">
+          <th style="text-align:left;padding:10px 14px;color:var(--text-muted);font-weight:400">类型</th>
+          <th style="text-align:left;padding:10px 14px;color:var(--text-muted);font-weight:400">他们是谁</th>
+          <th style="text-align:left;padding:10px 14px;color:var(--gold);font-weight:400">你是谁</th>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+          <td style="padding:10px 14px;color:var(--text-muted)">传统珠宝博主</td>
+          <td style="padding:10px 14px;color:var(--text-muted)">讲克拉、讲工艺、讲价格</td>
+          <td style="padding:10px 14px;color:var(--text)">讲气场、讲场合、讲被看见</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+          <td style="padding:10px 14px;color:var(--text-muted)">奢侈品分享账号</td>
+          <td style="padding:10px 14px;color:var(--text-muted)">晒包、晒表、晒收藏</td>
+          <td style="padding:10px 14px;color:var(--text)">解读为什么某件珠宝让你在那个场合被记住</td>
+        </tr>
+        <tr style="border-bottom:1px solid rgba(255,255,255,0.04)">
+          <td style="padding:10px 14px;color:var(--text-muted)">女性博主</td>
+          <td style="padding:10px 14px;color:var(--text-muted)">讲穿搭、讲美妆、讲情感</td>
+          <td style="padding:10px 14px;color:var(--text)">讲女性在社交场中的身份权力与审美表达</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;color:var(--text-muted)">生活方式博主</td>
+          <td style="padding:10px 14px;color:var(--text-muted)">展示精致生活</td>
+          <td style="padding:10px 14px;color:var(--text)">解剖精致背后的社交逻辑与心理权力</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-top:16px">
+    <div class="card">
+      <div class="card-title">人设记忆点</div>
+      <ul class="num-list">
+        <li>「那个总能说出你心里话的珠宝女人」</li>
+        <li>「讲出了我戴珠宝的真实原因」</li>
+        <li>「看完感觉被看透了，但很舒服」</li>
+        <li>她出现的地方：高端商务宴、美术馆开幕、私人沙龙</li>
+        <li>她的判断力是武器，不是姿态</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">人设口头禅</div>
+      <ul class="num-list">
+        <li>「珠宝不是装饰，是你的第一句话。」</li>
+        <li>「在某些场合，你的气场是你最贵的资产。」</li>
+        <li>「她没开口，但全场都知道她在。」</li>
+        <li>「好的珠宝不是让人看见它，是让人看见你。」</li>
+        <li>「女人最贵的不是珠宝，是戴什么珠宝的判断力。」</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="card-title">人设语言风格</div>
+    <div class="grid-2">
+      <div>
+        <div class="highlight">
+          <div class="highlight-title">✓ 要有的语言质感</div>
+          克制有力 · 不过度解释 · 说结论不说过程 · 偶尔留白 · 有「被内行识别」的密度 · 金句感强 · 让人想截图
+        </div>
+      </div>
+      <div>
+        <div class="highlight">
+          <div class="highlight-title">✗ 绝对不能有的语言</div>
+          ！！！感叹号轰炸 · 「姐妹们」口吻 · 价格卖点前置 · 撒娇感 · 微商话术 · 媚男话术 · 过度励志鸡汤
+        </div>
+      </div>
+    </div>
+    <div class="quote">「她不解释，但你会懂。这就是高阶女性语言的本质。」</div>
+  </div>
+</div>
+
+<!-- ===================== CONTENT SYSTEM ===================== -->
+<div class="section" id="content">
+  <div class="section-title">Part 03</div>
+  <div class="section-headline">账号内容体系 · 六大栏目</div>
+
+  <p style="margin-bottom:24px">点击各栏目展开20个选题 ↓</p>
+
+  <!-- COLUMN 1 -->
+  <div class="column-card">
+    <div class="column-header" onclick="toggleColumn(this)">
+      <div class="column-name">① 社交场观察室</div>
+      <div class="column-badge">20个选题 ↓</div>
+    </div>
+    <div class="column-topics">
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px">核心逻辑：从真实社交场景切入，解读珠宝×圈层的隐形规则，引发强烈共鸣</p>
+      <ul class="num-list">
+        <li>参加高端饭局，你的珠宝选错了会发生什么</li>
+        <li>那些在顶层圈子里从不张扬，却永远被记住的女人，她们戴什么</li>
+        <li>我观察了100个商界女性的珠宝选择，发现了一个规律</li>
+        <li>为什么有些女人戴一颗素珠，气场压过全场的钻石</li>
+        <li>第一次进高端饭局，我靠这一枚戒指打开了局面</li>
+        <li>在高奢场所里，哪种珠宝会让你「露怯」</li>
+        <li>为什么有些聪明女人从来不在重要场合戴「太贵」的东西</li>
+        <li>商务晚宴 vs 私人聚会，同一个女人为什么需要两种珠宝逻辑</li>
+        <li>我去了一个顶级私人沙龙，学到了最贵的一堂审美课</li>
+        <li>被人问「你这个在哪里买的」的那一刻，是什么感觉</li>
+        <li>你注意过吗，真正厉害的女人进场前会先看别人的珠宝</li>
+        <li>为什么有些女人戴着昂贵的珠宝反而显廉价</li>
+        <li>职场晋升后，为什么你需要重新审视自己的珠宝搭配</li>
+        <li>和男性重要客户会面，你的珠宝在传递什么信号</li>
+        <li>女性聚会的隐性权力游戏：为什么她的珠宝比她的头衔更有说服力</li>
+        <li>参加婚礼时的珠宝哲学：如何做到「有存在感但不抢主角」</li>
+        <li>艺术展、品酒会、慈善晚宴——三个场合三种珠宝逻辑</li>
+        <li>我见过最有气场的女人，她的项链值不到2000块</li>
+        <li>为什么有人在场合里无声地被降维，从她的珠宝就能看出来</li>
+        <li>高端圈子里不明说但人人都懂的珠宝潜规则</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COLUMN 2 -->
+  <div class="column-card">
+    <div class="column-header" onclick="toggleColumn(this)">
+      <div class="column-name">② 女性身份觉醒</div>
+      <div class="column-badge">20个选题 ↓</div>
+    </div>
+    <div class="column-topics">
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px">核心逻辑：触碰高阶女性最深层的欲望——被看见、被尊重、掌握权力感</p>
+      <ul class="num-list">
+        <li>30岁以后，女人需要一套全新的「存在语言」</li>
+        <li>为什么有些女人不需要开口，就已经赢了</li>
+        <li>真正的高阶女性从不用「努力感」证明自己</li>
+        <li>从打工女孩到被尊重的女人，我换掉的不是衣服，是审美</li>
+        <li>你有没有想过，别人对你的第一印象，是被你的配饰「塑造」的</li>
+        <li>有一种女性魅力，叫做「不解释的气场」</li>
+        <li>不依赖衰老焦虑，而是依靠审美进化——35岁后的女人怎么戴珠宝</li>
+        <li>为什么经济独立的女性，更需要一件「只为自己戴」的珠宝</li>
+        <li>有些女人35岁以后越来越有气场，她们做对了什么</li>
+        <li>我的珠宝哲学：戴让你「往前走」的东西，不戴让你「往回缩」的东西</li>
+        <li>女人最值得投资的资产：你的判断力和你的审美</li>
+        <li>不是所有的美都值得被解释，有一种美叫沉默的压迫感</li>
+        <li>什么是女性的「视觉权力」？为什么它比你想的更重要</li>
+        <li>不再为他人戴珠宝，这一天才是女人真正的开始</li>
+        <li>高阶女性的身份感，不是靠logo堆出来的</li>
+        <li>女人最迷人的样子：知道自己想要什么，且毫不犹豫</li>
+        <li>有一种成熟，叫不再需要别人来定义你的美</li>
+        <li>为什么有些女人永远是全场焦点，而另一些人花了十倍的钱却消失在背景里</li>
+        <li>我花了5年才明白：气场不是生来就有的，是选出来的</li>
+        <li>送给每一个开始「为自己活」的女人：你值得一件真正懂你的珠宝</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COLUMN 3 -->
+  <div class="column-card">
+    <div class="column-header" onclick="toggleColumn(this)">
+      <div class="column-name">③ 审美解码室</div>
+      <div class="column-badge">20个选题 ↓</div>
+    </div>
+    <div class="column-topics">
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px">核心逻辑：输出审美判断力，建立"她懂审美"的专业人设，软性植入珠宝</p>
+      <ul class="num-list">
+        <li>同样是珍珠，为什么一个显土一个显贵？差在哪</li>
+        <li>看懂这一点，你对珠宝的审美会直接跃迁一个层级</li>
+        <li>为什么日本女人戴素金永远比我们好看——解码「简中美学」的陷阱</li>
+        <li>「贵气感」的本质是什么？不是价格，是这个</li>
+        <li>同款戒指，为什么她戴起来像3万，你戴起来像300</li>
+        <li>欧洲老钱风为什么让人看一眼就记住——审美密码解析</li>
+        <li>最容易让女人显低端的5种珠宝搭配误区</li>
+        <li>黄金回潮的背后：不是复古，是女性审美话语权的觉醒</li>
+        <li>为什么minimal珠宝比堆砌感更有力量</li>
+        <li>戒指戴哪根手指，在社交场合传递的信号完全不同</li>
+        <li>2024年最值得关注的独立珠宝审美趋势</li>
+        <li>为什么「有故事的珠宝」比「有价值的珠宝」更打动人</li>
+        <li>从香奈儿到Cartier：顶奢珠宝品牌的审美逻辑有何不同</li>
+        <li>不对称戴法为什么越来越流行？背后是什么审美逻辑</li>
+        <li>「过度设计感」的珠宝为什么会让人显得用力过猛</li>
+        <li>冷白皮、暖黄皮、小麦皮——不同肤色的珠宝选择逻辑</li>
+        <li>我见过最会穿搭的女人，她的珠宝从来只有一件但绝对是对的那件</li>
+        <li>为什么有钱没品位和有品位没钱，在珠宝上一眼就能看出来</li>
+        <li>解读：为什么顶奢品牌的珠宝「越来越简单」</li>
+        <li>一个女人的审美成熟度，从她选珠宝的方式就能判断</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COLUMN 4 -->
+  <div class="column-card">
+    <div class="column-header" onclick="toggleColumn(this)">
+      <div class="column-name">④ 场景叙事</div>
+      <div class="column-badge">20个选题 ↓</div>
+    </div>
+    <div class="column-topics">
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px">核心逻辑：用强场景代入感自然展示珠宝，降低卖货感，提升购买欲</p>
+      <ul class="num-list">
+        <li>那一天我戴着它去签了一份改变人生的合同</li>
+        <li>她穿着白色连衣裙出现在我们的私人晚宴上，那枚胸针比她的出场费更贵</li>
+        <li>下午茶、红酒局、艺术展——我这周的3套珠宝搭配逻辑</li>
+        <li>出差北京，一个人在四季酒店吃早餐，我戴了这枚戒指</li>
+        <li>重要谈判前，我会做的最后一件事是什么</li>
+        <li>她离婚后第一件事，是买了一枚只属于自己的钻戒</li>
+        <li>飞头等舱那天，我选了这一件</li>
+        <li>一年中最重要的那顿饭，我如何决定当晚的珠宝</li>
+        <li>成为公司合伙人的那一天，我换掉了我之前所有的珠宝</li>
+        <li>女儿说「妈妈你今天好漂亮」，因为这枚耳环</li>
+        <li>在上海某个顶楼私人场合，我遇见了那个改变我珠宝观的女人</li>
+        <li>一个人去巴黎出差，住在玛黑区，我戴了什么</li>
+        <li>跟老客户的那顿饭，我本想低调，但她的第一句话是「你这是哪里买的」</li>
+        <li>第一次以「合伙人」身份出席行业年会，我的珠宝选择背后的逻辑</li>
+        <li>深秋，一场30人私人艺术收藏展，她一件没说，但那枚手环让全场记住了她</li>
+        <li>婆婆第一次见我，我戴的是这枚</li>
+        <li>升职后第一次主持全员大会，我在准备PPT之前先确认了这件事</li>
+        <li>她35岁开了自己的公司，给自己买的第一件礼物是什么</li>
+        <li>那场婚礼上，宾客们记住的不是婚纱，而是伴娘的那串项链</li>
+        <li>每年生日，我只为自己做一件事：选一件今年的珠宝</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COLUMN 5 -->
+  <div class="column-card">
+    <div class="column-header" onclick="toggleColumn(this)">
+      <div class="column-name">⑤ 女性关系与权力</div>
+      <div class="column-badge">20个选题 ↓</div>
+    </div>
+    <div class="column-topics">
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px">核心逻辑：挑战女性敏感神经，引发高互动评论，强化账号独特观点</p>
+      <ul class="num-list">
+        <li>为什么有些女人聚在一起，会下意识扫对方的珠宝</li>
+        <li>女性之间有一种不说破的审美竞争，你参与过吗</li>
+        <li>嫁给有钱人的女人，和靠自己赚钱的女人——她们的珠宝有什么不同</li>
+        <li>为什么职场上的女性上司比男性上司更在意下属的形象</li>
+        <li>「不想被猜到价格」的珠宝哲学——真正有品位的女人怎么想</li>
+        <li>为什么有些女人的珠宝是给男人看的，而另一些是给自己看的</li>
+        <li>高知女性圈子里，什么样的审美会被默默淘汰</li>
+        <li>为什么女人最难接受的不是被男人否定，而是被另一个女人用眼神否定</li>
+        <li>你有没有因为一件首饰，在某个场合直接升格了身份认同</li>
+        <li>母女之间的珠宝传承：她给我的那枚戒指，比任何遗产都重要</li>
+        <li>为什么真正的闺蜜之间，不会随便评价彼此的珠宝</li>
+        <li>女性送礼物的最高段位：送一件她不会给自己买但绝对配得上她的东西</li>
+        <li>当一个女人开始为自己买珠宝，她的人生进入了哪个阶段</li>
+        <li>「能配得上这件珠宝的人」——你有没有这样激励过自己</li>
+        <li>婚后仍在坚持「自己的珠宝自己买」的女人，有什么不一样</li>
+        <li>为什么有些女人离婚后反而越戴越好看</li>
+        <li>男人给的珠宝和女人给自己买的珠宝，最大的区别是什么</li>
+        <li>在关系里，哪个瞬间你意识到：我需要一件只属于我自己的东西</li>
+        <li>女人的珠宝盒里，最值钱的那一件是什么时候买的，为什么</li>
+        <li>为什么有些女人到了40岁，才开始戴真正适合自己的珠宝</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- COLUMN 6 -->
+  <div class="column-card">
+    <div class="column-header" onclick="toggleColumn(this)">
+      <div class="column-name">⑥ 珠宝策展室</div>
+      <div class="column-badge">20个选题 ↓</div>
+    </div>
+    <div class="column-topics">
+      <p style="color:var(--text-muted);font-size:13px;margin-bottom:12px">核心逻辑：高质感视觉内容 + 珠宝故事叙事，建立品位公信力，软植入变硬成交</p>
+      <ul class="num-list">
+        <li>这枚戒指背后有一个让我沉默了3秒的故事</li>
+        <li>我愿意花3万买这条项链的唯一原因</li>
+        <li>拆开一枚「不需要解释」的珠宝，你会发现什么</li>
+        <li>这款设计为什么让我看了两年才下手</li>
+        <li>独立珠宝设计师vs大牌——我如何选择我的每一件珠宝</li>
+        <li>同一种石头，为什么有人卖600，有人卖6万——不只是材质的问题</li>
+        <li>我的珠宝盒里有一件10年前买的东西，每次打开都觉得是对的</li>
+        <li>我如何评估一件珠宝「值不值」——我的个人标准</li>
+        <li>这枚耳环让我在3个不同场合被3个陌生人问起</li>
+        <li>我的「压箱底」系列：那些我只在特定场合才拿出来的珠宝</li>
+        <li>一枚好戒指应该具备什么样的「场合穿透力」</li>
+        <li>真正的投资珠宝和装饰珠宝的区别在哪里——不是价格</li>
+        <li>为什么我不买一线大牌的入门款，而是这样选择</li>
+        <li>那些让人「戴了就不想摘」的珠宝，共同点是什么</li>
+        <li>我找了3个月才找到这个设计——为什么等待是值得的</li>
+        <li>这颗石头的颜色，让我想起了某个下午在京都的光线</li>
+        <li>「定制」的意义不是独一无二，而是这个</li>
+        <li>我如何为不同性格的女性客户推荐珠宝——真实案例</li>
+        <li>送给刚升职的朋友一件珠宝，我是如何选的</li>
+        <li>这件新品为什么让我觉得它会成为「被传承的东西」</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TRAFFIC ===================== -->
+<div class="section" id="traffic">
+  <div class="section-title">Part 04</div>
+  <div class="section-headline">流量内容方向</div>
+
+  <div class="card">
+    <div class="card-title">最容易爆的观点</div>
+    <ul class="num-list">
+      <li>「珠宝买的不是材质，是你在那个场合被记住的权利。」——反传统认知，直击欲望</li>
+      <li>「你花10万买的包，在高端场合的功效可能不如一枚3万的戒指。」——认知颠覆</li>
+      <li>「为什么有些女人越来越值钱，她们的珠宝早就在说答案了。」——欲望驱动</li>
+      <li>「气场不是生来就有的，是被你选择的每一件东西塑造出来的。」——主体意识</li>
+      <li>「她不说话，但你感受到了她。这就是高阶审美的终极目的。」——情绪价值</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">最容易引发女性共鸣的话题</div>
+    <ul class="num-list">
+      <li>「终于开始只为自己买东西」的那个时刻</li>
+      <li>在某个场合，第一次感觉自己「对了」</li>
+      <li>因为一件首饰被陌生人问起的那种满足感</li>
+      <li>从「不配」到「这才是我」的审美自信转变</li>
+      <li>「不需要解释贵不贵，因为它本来就是我的」</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">最容易引发评论的话题（争议性 + 认同感）</div>
+    <ul class="num-list">
+      <li>「你觉得一个女人的珠宝选择，能反映她的阶层吗？」</li>
+      <li>「你会买男友给你买的珠宝，还是坚持自己选？」</li>
+      <li>「有没有一枚戒指，是你给自己的某个仪式感？」</li>
+      <li>「你最满意自己的哪一次珠宝选择？」</li>
+      <li>「贵的珠宝一定比便宜的更有气质吗？」</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">最适合系列化的内容</div>
+    <div class="grid-2">
+      <div>
+        <div class="highlight">
+          <div class="highlight-title">「社交场穿搭解码」系列</div>
+          每期选一个真实社交场景，解析一个完整的珠宝逻辑，12-20集长线内容
+        </div>
+        <div class="highlight" style="margin-top:10px">
+          <div class="highlight-title">「女性身份进化」系列</div>
+          25岁/30岁/35岁/40岁，每个年龄段的珠宝哲学与身份表达变化
+        </div>
+      </div>
+      <div>
+        <div class="highlight">
+          <div class="highlight-title">「一件珠宝的故事」系列</div>
+          每期一件真实商品，用叙事而非参数讲述它存在的意义
+        </div>
+        <div class="highlight" style="margin-top:10px">
+          <div class="highlight-title">「她和她的珠宝」系列</div>
+          真实客户故事（脱敏处理），每期一个女性的珠宝选择背后的人生节点
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CONVERT ===================== -->
+<div class="section" id="convert">
+  <div class="section-title">Part 05</div>
+  <div class="section-headline">成交内容方向</div>
+
+  <div class="card">
+    <div class="card-title">如何自然植入珠宝（去卖货感）</div>
+    <ul class="num-list">
+      <li><strong>故事植入：</strong>先讲场景和情绪，最后用「顺便一提，这枚是……」结尾</li>
+      <li><strong>观点植入：</strong>全篇讲审美逻辑，最后「今天我用来举例的这件，我放在了主页」</li>
+      <li><strong>对比植入：</strong>讲审美失误案例，然后「与之相反的是这一款，气质完全不同」</li>
+      <li><strong>他人视角植入：</strong>「被问最多的那件，终于上链接了」</li>
+      <li><strong>仪式感植入：</strong>「今年给自己的礼物，就是这一枚」</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">如何用场景卖货</div>
+    <ul class="num-list">
+      <li>绑定具体社交场合：签约/晋升/重要会面/私人聚会/慈善晚宴</li>
+      <li>绑定情绪节点：离婚后、晋升时、生日、第一次出差头等、孩子毕业典礼</li>
+      <li>绑定身份转换：从打工到创业、从被管理到管理者、从女儿到母亲</li>
+      <li>绑定关系场景：见婆婆、见重要客户、见老朋友、一个人旅行</li>
+      <li>绑定季节/时间：年末年会、春节家宴、夏日私人派对、秋季美术馆开幕</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-title">如何提升用户购买欲</div>
+    <div class="grid-2">
+      <div>
+        <div class="highlight">
+          <div class="highlight-title">欲望触发</div>
+          始终在描述「拥有它之后的样子」，而非「它本身有多好」——卖的是状态，不是物品
+        </div>
+        <div class="highlight" style="margin-top:10px">
+          <div class="highlight-title">稀缺感塑造</div>
+          限量设计、独立工坊、「这款我只选了3件」——高端感 = 不是人人都能拥有
+        </div>
+      </div>
+      <div>
+        <div class="highlight">
+          <div class="highlight-title">身份投射</div>
+          「配得上这件珠宝的女人，是什么样的女人」——让用户想成为那个人
+        </div>
+        <div class="highlight" style="margin-top:10px">
+          <div class="highlight-title">社交货币</div>
+          「这件东西在场合里会被问到」——给用户一个实际的社交回报预期
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">如何提升高客单（¥3000–¥50000）成交率</div>
+    <ul class="num-list">
+      <li><strong>价值锚定：</strong>先讲「高端场合的隐性成本」，让¥5000的珠宝显得极其合理</li>
+      <li><strong>长期价值：</strong>「每次出席重要场合都靠它」比消费品更划算的算法</li>
+      <li><strong>身份匹配：</strong>「你现在的段位，需要匹配相应的工具」——不是说贵，是说配</li>
+      <li><strong>私咨服务：</strong>私信提供「场合珠宝建议」，进入私域后再一对一成交</li>
+      <li><strong>对比降低抗拒：</strong>「一顿好的Omakase¥2000，这件戴100次，每次¥50」</li>
+      <li><strong>真实反馈前置：</strong>客户真实佩戴场景和故事，比任何促销都有效</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== MONETIZE ===================== -->
+<div class="section" id="monetize">
+  <div class="section-title">Part 06</div>
+  <div class="section-headline">商业变现路径</div>
+
+  <div class="phase-row">
+    <div class="phase-label">起号阶段<br><small style="font-size:11px;color:var(--text-muted)">0–1万粉</small></div>
+    <div class="phase-content">
+      <div class="phase-title">建立人设 · 输出观点 · 测试选题</div>
+      <div class="phase-desc">核心任务：让人记住「她是谁」，不急于卖货。每周3条内容：1条强观点（爆款测试）+1条场景叙事+1条审美解读。建立账号基础调性，让第一批粉丝是精准高阶女性。此阶段不推直接购买链接，通过内容引导添加微信或关注主页。</div>
+    </div>
+  </div>
+
+  <div class="phase-row">
+    <div class="phase-label">信任阶段<br><small style="font-size:11px;color:var(--text-muted)">1–5万粉</small></div>
+    <div class="phase-content">
+      <div class="phase-title">深化内容 · 建立专业权威 · 引流私域</div>
+      <div class="phase-desc">开始在内容中软性展示产品，通过「被问到的那件」「今天穿搭里的主角」方式植入。开始收集并发布真实客户使用故事（内容素材+信任背书双效）。启动私域（微信/社群），提供「场合珠宝顾问」服务，筛选高意向用户进入私聊通道。</div>
+    </div>
+  </div>
+
+  <div class="phase-row">
+    <div class="phase-label">转化阶段<br><small style="font-size:11px;color:var(--text-muted)">5万粉以上</small></div>
+    <div class="phase-content">
+      <div class="phase-title">内容成交 · 场景爆款 · 开始直播</div>
+      <div class="phase-desc">推出「系列专题内容」配合产品上新节奏。开始直播，但形式是「高端茶话会感」而非「卖货感」——分享场景故事、展示珠宝、解答私信问题。小红书图文种草 + 抖音视频引流 + 视频号留住中年层客户。</div>
+    </div>
+  </div>
+
+  <div class="phase-row">
+    <div class="phase-label">私域阶段<br><small style="font-size:11px;color:var(--text-muted)">持续运营</small></div>
+    <div class="phase-content">
+      <div class="phase-title">高价值社群 · 一对一顾问 · 口碑裂变</div>
+      <div class="phase-desc">建立「社交珠宝研究所」付费社群（定位：高阶女性圈层）。社群内容：审美分享、场合着装指导、新品优先试戴、线下私享会。口碑裂变：老客户分享真实故事，邀请好友进群，每次裂变均是圈层精准筛选。</div>
+    </div>
+  </div>
+
+  <div class="phase-row">
+    <div class="phase-label">高客单<br><small style="font-size:11px;color:var(--text-muted)">¥3000–5万</small></div>
+    <div class="phase-content">
+      <div class="phase-title">定制服务 · 私人顾问 · 高净值成交</div>
+      <div class="phase-desc">推出「场合珠宝私人定制顾问」服务（单次咨询¥599起，全年陪伴服务¥3999起）。顾问服务流程：了解客户生活圈层与近期重要社交场合 → 推荐1-3件最适合的珠宝 → 提供完整搭配方案。此模式自带「高端感」，且让高价珠宝购买有了专业背书，大幅提升高客单转化率。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== VISUAL ===================== -->
+<div class="section" id="visual">
+  <div class="section-title">Part 07</div>
+  <div class="section-headline">视觉风格系统</div>
+
+  <div class="grid-3">
+    <div class="style-item">
+      <div class="style-label">色调系统</div>
+      <div class="style-val">主色：暖白+奶茶米+深焦棕<br>辅色：哑光黑+烟灰<br>点缀：哑金+玫瑰古铜<br>——绝不出现：大红、明黄、荧光</div>
+    </div>
+    <div class="style-item">
+      <div class="style-label">拍摄风格</div>
+      <div class="style-val">胶片感、低饱和度、高对比度<br>大量留白与负空间<br>局部特写：手部/颈部/耳廓<br>偶尔模糊焦外，制造视觉诗意</div>
+    </div>
+    <div class="style-item">
+      <div class="style-label">服装方向</div>
+      <div class="style-val">Simple Luxury美学<br>西装+素色真丝+高腰阔腿<br>极简剪裁，质感面料<br>品牌参考：Theory / Max Mara / COS顶线</div>
+    </div>
+    <div class="style-item">
+      <div class="style-label">场景选择</div>
+      <div class="style-val">顶层餐厅/美术馆/私人书房<br>酒店大堂走廊/落地窗边<br>私家花园/高端商务空间<br>——绝不拍：家居卧室/商场柜台</div>
+    </div>
+    <div class="style-item">
+      <div class="style-label">镜头语言</div>
+      <div class="style-val">大量近景+特写（手/颈/耳）<br>慢推慢拉，不用抖音网红快剪<br>横版视频为主（高级感更强）<br>偶用固定机位+长镜头</div>
+    </div>
+    <div class="style-item">
+      <div class="style-label">参考方向</div>
+      <div class="style-val">视觉参考：Loro Piana / Bottega<br>气质参考：《晨光正好》徐静蕾<br>叙事参考：日系生活方式纪录片<br>平面参考：Kinfolk / Cereal杂志</div>
+    </div>
+  </div>
+
+  <div class="quote" style="margin-top:28px">「每一帧画面都要让人觉得——这个女人活在比我高半格的世界里，但我渴望进去。」</div>
+</div>
+
+<!-- ===================== STRUCTURE ===================== -->
+<div class="section" id="structure">
+  <div class="section-title">Part 08</div>
+  <div class="section-headline">爆款短视频结构模板</div>
+
+  <p style="margin-bottom:24px">适用于60–180秒短视频，可应用于抖音/小红书/视频号</p>
+
+  <div class="video-structure">
+    <div class="step">
+      <div class="step-label">爆点前置<br>0–5秒</div>
+      <div class="step-content">
+        用一句「认知颠覆」或「强情绪共鸣」的话直接开场
+        <small>示例：「一个女人戴珠宝的方式，暴露了她在社交场里的真实段位。」</small>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label">场景建立<br>5–20秒</div>
+      <div class="step-content">
+        描绘一个高度具体、有代入感的社交场景，让观众「看到自己」
+        <small>示例：「上周我在一个30人的私人晚宴，观察了在场所有女人的珠宝选择……」</small>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label">女性洞察<br>20–60秒</div>
+      <div class="step-content">
+        输出1–2个深度洞察，直击目标用户的内心欲望与痛点
+        <small>示例：「大多数女人在选珠宝的时候，脑子里想的是「好不好看」，但真正在社交场起作用的，从来不是美不美——是「有没有气场」。」</small>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label">情绪拉扯<br>60–100秒</div>
+      <div class="step-content">
+        制造「认同感」与「向往感」的情绪张力，加入真实故事或对比
+        <small>示例：「我见过一个女人，戴着一枚素金戒指，安静地坐在那里。没有人记得那顿饭上其他女人戴了什么，但所有人都记得她。」</small>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label">珠宝植入<br>100–130秒</div>
+      <div class="step-content">
+        自然展示产品，不说卖点，只说「它在那个场景里的作用」
+        <small>示例：「这枚，是我今天想和你们聊的——不是因为它贵，是因为它有那种「不需要解释」的气质。」（同时慢镜头展示细节）</small>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-label">结尾引导<br>最后10秒</div>
+      <div class="step-content">
+        用问题或悬念引导评论，不用「点赞关注」等俗套话术
+        <small>示例：「你有没有在某个场合，因为一件首饰，感觉整个人「对了」？评论告诉我。」</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:28px">
+    <div class="card-title">高级感输出法则</div>
+    <ul class="num-list">
+      <li>说「感受」不说「功能」——「戴上它走进那个房间，你会感受到一种微妙的位移」而非「这款克拉数达到X」</li>
+      <li>留白胜过解释——说完一个洞察，停顿，不要急着补充</li>
+      <li>节奏感：慢—停—慢，不要密集语速，给观众消化空间</li>
+      <li>结尾不要总结，要悬念——最好的结尾是让人想再看一遍</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== TITLES ===================== -->
+<div class="section" id="titles">
+  <div class="section-title">Part 09</div>
+  <div class="section-headline">100条爆款标题</div>
+
+  <div id="titlesContainer" class="titles-grid"></div>
+</div>
+
+<script>
+const titles = [
+  "戴珠宝不是为了好看，是为了在那个场合有开口的资格",
+  "我观察了50个顶层饭局，发现了一个没人说破的规律",
+  "为什么有些女人什么都没说，却已经赢了",
+  "在高端场合让人记住你，不需要最贵的，需要最对的",
+  "她离婚后给自己买的第一件东西，让所有人重新认识了她",
+  "30岁以后，女人需要一套全新的「存在语言」",
+  "为什么你花了双倍的钱，气场却只有她的一半",
+  "真正懂珠宝的女人，从来不在重要场合戴「太刻意」的东西",
+  "一枚好的戒指，是你最沉默也最有力的名片",
+  "不是她命好，是她的审美早就替她铺好了路",
+  "高端圈子里不说破但人人都懂的珠宝逻辑",
+  "为什么有些女人的珠宝越戴越像她，而另一些越戴越违和",
+  "一件珠宝的正确用法：不是装饰，是气场的物质载体",
+  "她没开口，但全场都在看她——这种女人是怎么做到的",
+  "为什么经济独立的女性，更需要一件「只为自己戴」的珠宝",
+  "有一种被凝视，叫做「她戴的是什么」",
+  "珠宝不是奢侈品，是你在高净值圈层的入场工具",
+  "气场这件事，75%是你选了什么戴在身上",
+  "同款人，为什么她戴起来是3万的感觉，你戴起来是300",
+  "我在某个顶级私人场合，学到了我见过最贵的审美课",
+  "为什么有些女人40岁以后才开始戴真正适合自己的珠宝",
+  "不是她变了，是她开始选「让自己更像自己」的东西了",
+  "一个女人什么时候开始为自己买珠宝，她就真的自由了",
+  "高阶感的本质不是钱，而是「你知道自己配」",
+  "在场合里消失的女人和被记住的女人，差的是这个",
+  "我的珠宝哲学：戴让你往前走的，不戴让你原地踏步的",
+  "为什么有些女人明明没说话，气场已经压住了全场",
+  "你的珠宝在替你说话，问题是它说的对吗",
+  "一件好的珠宝不让人看见它，让人看见你",
+  "商务晚宴前，聪明的女人会检查三件事——最后一件是这个",
+  "为什么有些女性上司比男性更在意下属的形象",
+  "「贵气感」不是钱堆出来的，是这种东西给的",
+  "35岁后越来越有气场的女人，她们悄悄做对了什么",
+  "在关系里，为自己买第一件珠宝的那天，意味着什么",
+  "真正的高阶女性，用的不是最贵的，是最准的",
+  "参加顶层聚会前，你应该问自己的不是「好不好看」",
+  "那些在高净值圈里站得稳的女人，身上有一个共同点",
+  "我花了5年明白：气场不是与生俱来的，是被你的每一次选择塑造的",
+  "有一种美叫不需要解释，它比所有的解释都更有说服力",
+  "为什么有些女人戴素金永远比你的钻石更吸引人",
+  "在某些场合，你的判断力比你的头衔更值钱",
+  "送给每一个开始「只为自己而活」的女人",
+  "最容易让女人在场合里显低端的5个珠宝误区",
+  "当她出现在那个场合，所有人的眼神都做了同一件事",
+  "为什么有些珠宝越戴越值钱，不只是因为材质",
+  "一件高阶珠宝的真正功效，从来不是在镜子前发挥的",
+  "她没有最贵的项链，但她是那顿饭上被记住时间最长的人",
+  "我的「压箱底」：只在特定场合拿出来的那枚，值不值",
+  "为什么minimal珠宝有时候比堆砌感更让人印象深刻",
+  "黄金回潮背后，是女性审美话语权的一次无声革命",
+  "有一种成熟叫：不再需要别人来定义你的美",
+  "女人最贵的不是珠宝，是戴什么珠宝的判断力",
+  "在圈层社交里，第一印象有多少是你「配饰」给的",
+  "她说她再也不戴男友送的珠宝了，原因让我沉默了三秒",
+  "这枚戒指让我在三个不同场合被陌生人主动问起",
+  "高奢场所里，哪种珠宝会让你在不知不觉中「露怯」",
+  "为什么有些女人进场前，会先看其他女人戴什么",
+  "艺术展、签约宴、私人party——同一个女人的三种珠宝逻辑",
+  "我如何评估一件珠宝「值不值」——不是看价格的那种方法",
+  "这件东西让我觉得，它会成为可以被传承的东西",
+  "聪明的女人选珠宝，选的是「场合穿透力」而不是克拉数",
+  "那些在场合里有「无声存在感」的女人，身上共同点是什么",
+  "为什么有些女人的珠宝越来越像一种「宣言」",
+  "同一个女人，在职场和私人场合为什么需要两套珠宝逻辑",
+  "我给升职后的自己买的第一件东西，是这个",
+  "一个女人的珠宝盒里，最值钱的那件是什么时候买的",
+  "嫁给有钱人的女人和靠自己赚钱的女人，她们的珠宝逻辑有什么不同",
+  "不是她比你有钱，是她比你早明白钱应该花在哪里",
+  "为什么有些女人离婚后反而越来越有气场",
+  "那个让全场窒息的女人，她身上只有一件首饰",
+  "你有没有因为一件珠宝，在某个场合完成了「身份跃升」",
+  "见重要客户前做的最后一件事，不是背资料，是确认这个",
+  "真正的高净值女性，从来不靠logo说话",
+  "每年生日，我只为自己做一件事：选今年的珠宝",
+  "戒指戴哪根手指，在社交场合传递的信号是完全不同的",
+  "定制的意义从来不是「独一无二」，而是这个",
+  "她的胸针比她的名片更先一步打开了那扇门",
+  "有没有一件东西，是你给某个人生节点的仪式感",
+  "让别人问「你这是哪里买的」，是一种什么样的满足感",
+  "送一件她不会给自己买但绝对配得上她的东西，是最高段位的礼物",
+  "升职后第一次主持大会，我在准备PPT之前先确认了什么",
+  "不依赖衰老焦虑，而是依靠审美进化——35岁之后的女人怎么戴珠宝",
+  "为什么独立女性越来越拒绝戴「别人给她定义」的珠宝",
+  "欧洲老钱风为什么让人一眼就记住——审美密码解析",
+  "她说「我不是在买珠宝，我是在买当时的自己」",
+  "一枚素金戒指为什么有时候比一颗三克拉钻石更让人记住",
+  "为什么「不需要解释贵不贵」才是真正的高阶感",
+  "有人问我选珠宝的逻辑，我说我只选「让我更像自己」的那个",
+  "高端场合里，真正让你被看见的，不是你的包，是这个",
+  "我认识一个女人，她花在珠宝上的每一分钱都是真正的投资",
+  "重要谈判前，我会做的最后一个仪式性动作",
+  "当你的气场开始与你的身份相匹配，你会发现一件有趣的事",
+  "她只戴一件，但那件决定了整个场合对她的认知",
+  "我见过最懂社交的女人，她的珠宝选择从来不是随机的",
+  "有一种女性魅力，叫做进场前三秒已经赢了",
+  "女人最值得投资的两件事：你的判断力，和你身上这件东西",
+  "不是每个女人都需要贵的珠宝，但每个女人都需要「对的」珠宝",
+  "在那个场合，我意识到自己终于戴上了和这个人生阶段匹配的东西",
+  "最沉默的那种权力感，你知道是什么吗"
+];
+
+const container = document.getElementById('titlesContainer');
+titles.forEach((t, i) => {
+  container.innerHTML += `<div class="title-item"><span class="title-num">${String(i+1).padStart(2,'0')}</span><span>${t}</span></div>`;
+});
+
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({top: document.querySelector('.nav').offsetTop - 10, behavior:'smooth'});
+}
+
+function toggleColumn(header) {
+  const topics = header.nextElementSibling;
+  const badge = header.querySelector('.column-badge');
+  topics.classList.toggle('open');
+  badge.textContent = topics.classList.contains('open') ? '20个选题 ↑' : '20个选题 ↓';
+}
+</script>
+</body>
+</html>

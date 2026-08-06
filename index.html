@@ -5,19 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Redirecting…</title>
     <!-- Redirect to the existing pricing HTML file -->
-    <meta http-equiv="refresh" content="0; url=/E59
-" />
+    <meta http-equiv="refresh" content="0; url=/tom-editor-2026-video-pricing.html" />
   </head>
   <body>
-    <p>页面已移动。如果浏览器未自动跳转，请点击下面的链接：</p>
-    <p><a id="target" href="/剪辑师汤姆 _ 2026 年视频剪辑报价单.html">前往报价单页面</a></p>
+    <p>页面正在跳转到 <a href="/tom-editor-2026-video-pricing.html">tom-editor-2026-video-pricing.html</a>，如果没有自动跳转，请点击该链接。</p>
     <script>
-      // Ensure the link uses an encoded URL to avoid issues with spaces/中文
-      const encoded = '/%E5%89%AA%E8%BE%91%E5%B8%88%E6%B1%A4%E5%A7%86%20_%202026%20%E5%B9%B4%E8%A7%86%E9%A2%91%E5%89%AA%E8%BE%91%E6%8A%A5%E4%BB%B7%E5%8D%95.html';
-      const a = document.getElementById('target');
-      a.href = encoded;
-      // if not redirecting via meta, redirect with JS as fallback
-      setTimeout(() => { location.replace(encoded); }, 50);
+      // JS fallback in case meta refresh is blocked
+      setTimeout(function(){
+        location.replace('/tom-editor-2026-video-pricing.html');
+      }, 50);
     </script>
   </body>
 </html>
